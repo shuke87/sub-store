@@ -15,50 +15,53 @@ dns:
     - tls://1.0.0.1:853
     - tls://dns.google:853
 proxies:
-  - {name: ⭐️TG：@Helloworld_1024, server: 120.232.240.56, port: 11428, client-fingerprint: chrome, type: ssr, cipher: chacha20-ietf, password: Fhbe0z, protocol: auth_aes128_sha1, obfs: tls1.2_ticket_auth, protocol-param: 24:SpYUtPeJYhRk4FWC, obfs-param: 6f41b24.microsoft.com}
-  - {name: 西班物7, server: 85.117.235.107, port: 8917, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: a6fd0116b1bdfcc7, tfo: false}
-  - {name: 🇹🇼 🅷🆆 台湾12, server: 185.22.155.97, port: 8917, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: fb1fdede6c0f4948, tfo: false}
-  - {name: 🇫🇷 🅷🆆 法国2, server: 185.22.155.70, port: 8916, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: afe96c75b1061b72, tfo: false}
-  - {name: 🇰🇷 🅷🆆 韩国1, server: 85.117.235.107, port: 8917, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: a6fd0116b1bdfcc7, tfo: false}
-  - {name: 🇸🇬 🅷🆆 新加坡9, server: 45.130.146.234, port: 8915, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: 96c6db76ff872d03, tfo: false}
-  - {name: 🇹🇭 🅷🆆 泰国3, server: 45.130.147.132, port: 8912, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: 1bcae8007680dca3, tfo: false}
-  - {name: 🇺🇸 🅷🆆 美国8, server: 185.22.155.124, port: 9612, client-fingerprint: chrome, type: ss, cipher: aes-256-gcm, password: 6f44dd5d39d71323, tfo: false}
-  - {name: 🇹🇼 🅷🆆 台湾, server: 120.232.240.19, port: 8351, client-fingerprint: chrome, type: ss, cipher: chacha20, password: g5ESftBL3tjd, tfo: false}
-  - {name: 🇭🇰 🅷🆆 香港, server: 120.232.240.19, port: 8321, client-fingerprint: chrome, type: ss, cipher: chacha20, password: passLUsO2Ktuer77tu, tfo: false}
-  - {name: 🇭🇰 🅷🆆 香港1, server: 120.232.240.19, port: 9001, client-fingerprint: chrome, type: ss, cipher: chacha20, password: nUthZ7z3VmyV, tfo: false}
-  - {name: 🇭🇰 🅷🆆 香港2, server: 120.232.240.19, port: 9002, client-fingerprint: chrome, type: ss, cipher: chacha20, password: PTgFLLrT5pVg, tfo: false}
-  - {name: 🇭🇰 🅷🆆 香港3, server: 120.232.240.19, port: 9003, client-fingerprint: chrome, type: ss, cipher: chacha20, password: v5aUUtme3jxs, tfo: false}
-  - {name: 🇭🇰 🅷🆆 香港4, server: 120.232.240.19, port: 9004, client-fingerprint: chrome, type: ss, cipher: chacha20, password: s6Zau9ioic, tfo: false}
--{名称：make you mayoto you mayoto香港 5，服务器：120.232.240.19，端口：9005，客户端-指纹：chrome，type:ss，密码：chacha20，密码：sJMdcI 7 NPj，tfo:false}
--{名称：make you you mayoto you以色列，服务器：120.232.240.19，端口：8348，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：N9k4 f2 PORl 14，tfo:false}
--{名称：make you mayoto you you日本，服务器：120.232.240.19，端口：8331，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：GqbcCfh 365 aT，tfo:false}
--{名称：make you mayoto you mayou日本 2，服务器：120.232.240.19，端口：8335，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：avpBqFFmsYBN，tfo:false}
--{名称：make you mayoto you mayou首尔，服务器：120.232.240.19，端口：8339，客户端-指纹：chrome，type:ss，cipher:chacha20，password:ADZmRQUGHTwX，tfo:false}
--{名称：maKe you mayoto you新加坡，服务器：120.232.240.19，端口：8334，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：DvPfKa 8 vsV 9 K，tfo:false}
--{名称：make you mayoto you you洛杉矶新，服务器：120.232.240.19，端口：8332，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：8BZ 5 uBrPuUDY，tfo:false}
--{名称：make you you mayoto you洛杉矶，服务器：120.232.240.19，端口：8342，客户端-指纹：chrome，type:ss，密码：chacha20，密码：r8jh 6 ZeykHvB，tfo:false}
--{名称：make you mayoto you you达拉斯，服务器：120.232.240.19，端口：8344，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：wDazHDu63 gcg，tfo:false}
--{名称：make you mayoto you you法兰克福，服务器：120.232.240.19，端口：8333，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：jrgc 64 sFSLQM，tfo:false}
--{名称：make you youmayoto you巴黎，服务器：120.232.240.19，端口：8347，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：q2kSGp4 ayFKB，tfo:false}
--{名称：make you mayoto you you英国，服务器：120.232.240.19，端口：8337，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：3 fn 3 CH 5 Swh 2 N，tfo:false}
--{名称：纽约，服务器：120.232.240.19，端口：8349，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：d 3 baK 6 NW 2 HEc，tfo:false}
--{名称：make you mayoto you you澳大利亚，服务器：120.232.240.19，端口：8341，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：zWyQvJbQRZaV，tfo:false}
--{名称：make you mayoto you you加拿大，服务器：120.232.240.19，端口：8343，客户端-指纹：chrome，type:ss，cipher:chacha20，密码：dkYsdgWqegNV，tfo:false}
--{name:make willomayou mayoto you com HK 1，服务器：36.141.0.27，端口：14002，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make willomayou mayoto you com 2，服务器：36.141.0.27，端口：13003，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：you mayoto mayou westyou com HK 3，服务器：36.141.0.27，端口：13001，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:i2. hdslb. com，skip-cert-验证：true}
--{名称：make you mayou mayoto mayoto mayou JP，服务器：120.233.27.38，端口：13061，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make you mayoto you mayoto you mayou JP 2，服务器：120.241.118.157，端口：13049，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make you mayoto you mayoto you JP 3，服务器：120.241.118.157，端口：13048，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{name:make willomayokowyousyou mayouse SG，服务器：36.141.0.27，端口：14009，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：mayou willowyousyou mayoto mayou SG 2，服务器：36.141.0.27，端口：14008，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{name:make willomayokowyousyou macrown SG 3，服务器：36.141.0.27，端口：13007，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：mayou mayou mayoto mayou mayou wallous，服务器：36.141.0.27，端口：13056，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{name:make you mayoto mayou mayou mayous 2，服务器：36.141.0.27，端口：13053，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make wilyou mayoto mayou westyous 3，服务器：36.141.0.27，端口：13063，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make wilyou mayoto mayou mayou mayousus 4，服务器：36.141.0.27，端口：13064，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
--{名称：make wilyou mayoto mayou westyous 5，服务器：36.141.0.27，端口：13054，客户端-指纹：chrome，类型：木马，密码：7745 cd82-55ad-39 e 5-8 cb 9-bd 605 b 8808 d 3，sni:ip2648428075mobgslb.tbcache.com，skip-cert-验证：true}
+
 proxy-groups:
+proxy-providers:
+  "Subscription_1": # 胖虎
+    type: http # 必须, provider 类型,可选 http/file
+    url: "https://raw.githubusercontent.com/gitbigg/dy/main/jd" # 注意!如果您的链接中带有“&”字符,请删掉.
+    path: "./proxy_providers/Subscription_1.yaml" # 机场配置保存位置
+    proxy: "🌐 全球直连"
+    header:
+      <<: *proxy_providers_header # 引用相关锚点
+    health-check: # 延迟测试
+      enable: true # 是否启用,可选 true/false
+      <<: *proxy_providers_health_check
+    override: # 覆写节点内容
+      <<: *proxy_providers_override
+      additional-prefix: "【01】| " # 为节点名称添加固定前缀
+    exclude-filter: "(?i)前往|加入|群|流量|过期|回国|CN|安徽|北京|重庆|福建|甘肃|广东|广西|贵州|海南|河北|黑龙江|河南|湖北|湖南|吉林|江苏|江西|辽宁|内蒙古|宁夏|青海|山东|山西|陕西|上海|四川|天津|西藏|新疆|云南|浙江"
+    # 过滤回国等..
+  "Subscription_2":
+    type: http
+    url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"
+    path: "./proxy_providers/Subscription_2.yaml"
+    proxy: "🧭 探索大陆"
+    header:
+      <<: *proxy_providers_header
+    health-check:
+      enable: true
+      <<: *proxy_providers_health_check
+    override:
+      <<: *proxy_providers_override
+      additional-prefix: "【02】| "
+    exclude-filter: "(?i)前往|加入|群|流量|过期|回国|CN|安徽|北京|重庆|福建|甘肃|广东|广西|贵州|海南|河北|黑龙江|河南|湖北|湖南|吉林|江苏|江西|辽宁|内蒙古|宁夏|青海|山东|山西|陕西|上海|四川|天津|西藏|新疆|云南|浙江"
+
+  "Subscription_3":
+    type: http
+    url: "https://flynb.site/sub/?token=F9F9zZcllpdyN5TluF9F9zZF9F9zZ11EEfx0g&tag=mixed"
+    path: "./proxy_providers/Subscription_3.yaml"
+    proxy: "🧭 探索大陆"
+    header:
+      <<: *proxy_providers_header
+    health-check:
+      enable: true
+      <<: *proxy_providers_health_check
+    override:
+      <<: *proxy_providers_override
+      additional-prefix: "【03】| "
+    exclude-filter: "(?i)前往|加入|群|流量|过期|回国|CN|安徽|北京|重庆|福建|甘肃|广东|广西|贵州|海南|河北|黑龙江|河南|湖北|湖南|吉林|江苏|江西|辽宁|内蒙古|宁夏|青海|山东|山西|陕西|上海|四川|天津|西藏|新疆|云南|浙江"
 -姓名：节点选择
 类型：选择
     proxies:
