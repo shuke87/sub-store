@@ -251,7 +251,7 @@ proxy_groups_proxy: &proxy_groups_proxy {type: select, proxies: [🧭 探索大�
 proxy_groups_direct: &proxy_groups_direct {type: select, proxies: [🌐 全球直连, 🧭 探索大陆]}
 
 proxy-groups:
-  - {name: 🧭 探索大陆, type: select, proxies: [🌸 自动切换, 🌐 全球直连, ]}
+  - {name: 🧭 探索大陆, type: select, proxies: [🗺 选择节点,🌸 自动切换, 🌐 全球直连, ]}
   - {name: 🌸 自动切换, type: load-balance, include-all-providers: true, tolerance: 5}
   - {name: 🗺 选择节点, type: select, proxies: [🌸 自动切换, 🌐 全球直连], include-all-providers: true}
   - {name: 💌 谷歌推送, <<: *proxy_groups_proxy}
