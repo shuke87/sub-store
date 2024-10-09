@@ -201,7 +201,7 @@ proxy_providers_override: &proxy_providers_override
 proxy-providers:
   "Subscription_1": # 胖虎
     type: http # 必须, provider 类型,可选 http/file
-    url: "https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/trojan" # 注意!如果您的链接中带有“&”字符,请删掉.
+    url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gitbigg/dy/main/jd" # 注意!如果您的链接中带有“&”字符,请删掉.
     path: "./proxy_providers/Subscription_1.yaml" # 机场配置保存位置
     proxy: "🌐 全球直连"
     header:
