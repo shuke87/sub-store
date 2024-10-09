@@ -301,8 +301,8 @@ rules:
   - OR,((GEOSITE,category-ads-all),(RULE-SET,anti-AD)),🔴 拦截数据 # 包含了常见的广告域名及提供商的域名 | 自定义拦截
   - OR,((GEOSITE,private),(GEOIP,private,no-resolve)),🌐 全球直连 # 包含私有 IP
   - OR,((AND,((DST-PORT,443),(NETWORK,udp),(GEOSITE,!cn))),(AND,((DST-PORT,443),(NETWORK,udp),(GEOIP,!cn)))),🇶 Q U I C # 国内以外的 QUIC
-  - RULE-SET,rule_proxy,🧭 探索大陆 # 自定义代理
-  - RULE-SET,rule_direct,🌐 全球直连 # 自定义直连
+  - RULE-SET,anti-AD,🧭 探索大陆 # 自定义代理
+  - RULE-SET,anti-AD,🌐 全球直连 # 自定义直连
   - GEOSITE,biliintl,🧭 探索大陆
   - GEOSITE,bilibili,📺 哔哩哔哩
   - GEOSITE,netflix,🎞 奈飞影视
