@@ -246,13 +246,14 @@ proxy-providers:
 
 #################### 策略组 ####################
 proxy_groups_use_load_balance: &proxy_groups_use_load_balance {type: load-balance, include-all-providers: true, strategy: consistent-hashing} # strategy: consistent-hashing/round-robin/sticky-sessions
-proxy_groups_select_1_2: &proxy_groups_select_1_2 {type: select, proxies: [🌸 自动切换, 🌐 全球直连]}
+proxy_groups_select_1_2: &proxy_groups_select_1_2 {type: select, proxies: [🗺 选择节点, 🌸 自动切换, 🌐 全球直连]}
 proxy_groups_proxy: &proxy_groups_proxy {type: select, proxies: [🧭 探索大陆, 🌐 全球直连]}
 proxy_groups_direct: &proxy_groups_direct {type: select, proxies: [🌐 全球直连, 🧭 探索大陆]}
 
 proxy-groups:
   - {name: 🧭 探索大陆, type: select, proxies: [🌸 自动切换, 🌐 全球直连, ]}
-  - {name: 🌸 自动切换, type: url-test, include-all-providers: true, tolerance: 5}
+  - {name: 🌸 自动切换, type: load-balance, include-all-providers: true, tolerance: 5}
+  - {name: 🗺 选择节点, type: select, proxies: [🌸 自动切换, 🌐 全球直连], include-all-providers: true}
   - {name: 💌 谷歌推送, <<: *proxy_groups_proxy}
   - {name: 📺 油管视频, <<: *proxy_groups_proxy}
   - {name: 📺 哔哩哔哩, <<: *proxy_groups_direct}
