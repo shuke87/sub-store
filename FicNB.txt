@@ -276,7 +276,6 @@ proxy-groups:
 
 #################### 规则集合 ####################
 rule-providers:
-rule-providers:
   # anti-AD 广告拦截规则
   # https://github.com/privacy-protection-tools/anti-AD
   # 如果误杀率高请自行更换
