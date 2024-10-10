@@ -276,32 +276,34 @@ proxy-groups:
 
 #################### 规则集合 ####################
 rule-providers:
-  # anti-AD 广告拦截规则
+# anti-AD 广告拦截规则
   # https://github.com/privacy-protection-tools/anti-AD
   # 如果误杀率高请自行更换
-  秋风广告规则:
-    <<: *dom
+  anti-AD:
+    type: http
+    behavior: domain
     format: yaml
-    path: ./rule_providers/AWAvenue-Ads-Rule-Clash.yaml
-    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Clash.yaml"
-  AntiAD:
-    <<: *cla
-    format: text
-    path: ./rule_providers/AntiAD.list
-    url: "https://whatshub.top/rule/AntiAD.list"
-  Advertising_Classical:
-    <<: *cla
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/anti-AD.yaml
+    url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml?"
+    interval: 600
+  # anti-AD 白名单规则
+  anti-AD-white:
+    type: http
+    behavior: domain
     format: yaml
-    path: ./rule_provider/Advertising_Classical.yaml
-    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml"
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+    path: ./rule_provider/anti-AD-white.yaml
+    url: "https://raw.githubusercontent.com/privacy-protection-tools/dead-horse/master/anti-ad-white-for-clash.yaml?"
+    interval: 600
 #################### 路由规则 ####################
 rules:
   - OR,((AND,((NETWORK,tcp),(DST-PORT,53))),(AND,((NETWORK,udp),(DST-PORT,53)))),⚫ DNS劫持 # 劫持 DNS
-  - OR,((GEOSITE,category-ads-all),(RULE-SET,秋风广告规则)),🔴 拦截数据 # 包含了常见的广告域名及提供商的域名 | 自定义拦截
+  - OR,((GEOSITE,category-ads-all),(RULE-SET,rule_reject)),🔴 拦截数据 # 包含了常见的广告域名及提供商的域名 | 自定义拦截
   - OR,((GEOSITE,private),(GEOIP,private,no-resolve)),🌐 全球直连 # 包含私有 IP
   - OR,((AND,((DST-PORT,443),(NETWORK,udp),(GEOSITE,!cn))),(AND,((DST-PORT,443),(NETWORK,udp),(GEOIP,!cn)))),🇶 Q U I C # 国内以外的 QUIC
-  - RULE-SET,秋风广告规则,🧭 探索大陆 # 自定义代理
-  - RULE-SET,秋风广告规则,🌐 全球直连 # 自定义直连
+  - RULE-SET,rule_proxy,🧭 探索大陆 # 自定义代理
+  - RULE-SET,rule_direct,🌐 全球直连 # 自定义直连
   - GEOSITE,biliintl,🧭 探索大陆
   - GEOSITE,bilibili,📺 哔哩哔哩
   - GEOSITE,netflix,🎞 奈飞影视
