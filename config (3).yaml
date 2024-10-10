@@ -1,0 +1,439 @@
+mixed-port: 7890
+allow-lan: false
+mode: 'rule'
+unified-delay: true
+log-level: 'silent'
+ipv6: true
+tcp-concurrent: true
+enable-process: true
+find-process-mode: 'strict'
+global-client-fingerprint: 'random'
+keep-alive-interval: 30
+geodata-mode: true
+geodate-loader: 'standard'
+geo-auto-update: true
+geo-update-interval: 168
+geox-url:
+  geoip: "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/geoip.dat"
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  mmdb: "https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    QUIC:
+      ports: [443,8443]
+      override-destination: true
+
+tun:
+  enable: false
+  stack: 'mixed'
+  dns-hijack:
+    - ' any:53 '
+    - ' tcp://any:53 '
+  auto-route: true
+  auto-detect-interface: true
+  
+dns:
+  enable: true
+  prefer-h3: true
+  use-hosts: true
+  use-system-hosts: true
+  listen: '0.0.0.0:1053'
+  ipv6: false
+  enhanced-mode: 'fake-ip'
+  fake-ip-range: '192.18.0.1/16'
+  fake-ip-filter:
+    - '*'
+    - '+.lan'
+    - 'connect.rom.miui.com'
+    - 'localhost.ptlogin2.qq.com'
+  default-nameserver:
+    - '223.5.5.5'
+    - '223.6.6.6'
+    - '1.12.12.12'
+    - '119.28.28.28'
+    - '8.8.8.8'
+    - '[2400:3200::1]'
+    - '[2400:3200:baba::1]'
+  nameserver:
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+#    - "quic://dns.alidns.com"
+    - "dhcp://en0"
+  fallback:
+    - "tls://8.8.8.8"
+    - "tls://1.1.1.1"
+    - "https://dns.google/dns-query"
+    - "https://cloudflare-dns.com/dns-query"
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+    ipcidr:
+      - '240.0.0.0/4'
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+      - '+.telegram.com'
+# =====================================================================================================================
+FilterHK: &FilterHK "(?i)(港|🇭🇰|hk|hongkong|hong kong)"
+FilterHKSP: &FilterHKSP "(?i)(港|🇭🇰|hk|hongkong|hong kong).*(?i)(HKT|HKBN|Special|家宽|家庭|Home|2.00)"
+FilterTW: &FilterTW "(?i)(台|tw|taiwan)"
+FilterSG: &FilterSG "(?i)(新|🇸🇬|sg|singapore)"
+FilterSGSP: &FilterSGSP "(?i)(新|🇸🇬|sg|singapore).*(?i)(SG-04|SGGS|Special|家宽|家庭|Home|2.00)"
+FilterJP: &FilterJP "(?i)(日本|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan)"
+FilterJPSP: &FilterJPSP "(?i)(日本|🇯🇵|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan).*(?i)(Sonet|Special|家宽|家庭|Home|2.00)"
+FilterKr: &FilterKR "^(?!.*((?i)Ukraine)).*(?i)(KOR|韩国|首尔|韩|韓|KR|Korea)"
+FilterUS: &FilterUS "(?i)(美|🇺🇸|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states)"
+FilterRU: &FilterRU "(?i)(俄罗斯|莫斯|RU|Russia|Moscow)"
+FilterOther: &FilterOther "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates|韩|KR|Korea|佣金|官网|免翻|到期|流量|更新|点外|重置|免流|Direct|GB|Days|Date|Expire|Premium|港|HK|hk|Hong Kong|HongKong|hongkong|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|台|新北|彰化|TW|Taiwan|KR|Korea|KOR|首尔|韩|韓|狮城|狮|新加坡|坡|SG|Singapore|俄罗斯|莫斯|RU|Russia|Moscow)).*$"
+FilterAll: &FilterAll "(?i)^(?!.*(佣金|套餐|官网|免翻|过期|剩余|到期|流量|更新|点外|重置|免流|优惠|超实惠|址|Direct|Days|Date)).*"
+FilterLowMag: &FilterLowMag '0\.\d+s?[xX×]'
+FilterHighMag: &FilterHighMag '^(?!(0\.)).*([^\d\s]+(\d{2}\s)?(?!0\.)[1-9]\d*(?:\.\d+)?\s?[xX×]).*$' 
+
+# 订阅更新与测试
+Proxyer: &Proxyer
+    type: http
+    interval: 3600
+    health-check:
+      enable: true
+      url: "http://1.1.1.1"
+
+# 手动选择策略组
+Use: &Use 
+    type: select
+    Use:
+      - 订阅二     
+      - 订阅一
+      - 订阅三
+      - 订阅四
+    filter: *FilterAll
+
+# 策略组引用
+Selector: &Selector
+   type: select
+#   lazy: true
+   proxies: [ DIRECT, REJECT, 手动选择, 低倍率节点, 高倍率节点, Hong Kong, Singapore, Japan, HK-故障转移, TW-故障转移, SG-故障转移, JP-故障转移, KR-故障转移, US-故障转移, RU-故障转移, HK-负载均衡, TW-负载均衡, SG-负载均衡, JP-负载均衡, US-负载均衡, KR-负载均衡, RU-负载均衡, 冷门节点 ]
+
+# 延迟优选策略组
+auto: &auto          #自动选择
+   type: url-test 
+   lazy: true 
+   url: "http://1.1.1.1"
+   tolerance : 50
+   interval: 360
+   timeout : 5
+   <<: *Use     
+
+loadc: &loadc       #负载均衡 将会把相同顶级域名的请求分配给策略组内的同一个代理节点
+   type: load-balance
+   url: "http://1.1.1.1"
+   interval: 300
+   strategy: consistent-hashing            #或者round-robin
+   <<: *Use
+
+fallb: &fallb         #自动回退
+  type: fallback
+  url: "http://1.1.1.1"
+  interval: 300
+  <<: *Use
+
+# 规则类型:domain
+dom: &dom {type: http, behavior: domain, interval: 86400}
+
+# 规则类型:classical
+cla: &cla {type: http, behavior: classical, interval: 86400}
+
+# 规则类型:ipcidr
+ipc: &ipc {type: http, behavior: ipcidr, interval: 86400}
+# =====================================================================================
+
+proxy: [ ]
+
+proxy-providers:
+  订阅一:
+    <<: *Proxyer
+#    proxy: 手动选择
+    path: ./proxy_provider/订阅一.yaml
+    url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gitbigg/dy/main/jd"
+    override:
+        additional-prefix: "胖虎| "
+       
+  订阅二:
+    <<: *Proxyer
+    path: ./proxy_provider/订阅二.yaml
+#    proxy: 手动选择
+    url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"
+    override:
+        additional-prefix: "分享社| "
+
+  订阅三:
+    <<: *Proxyer
+#    proxy: 手动选择
+    path: ./proxy_provider/订阅三.yaml
+    url: "https://flynb.site/sub/?token=F9F9zZcllpdyN5TluF9F9zZF9F9zZ11EEfx0g&tag=mixed"
+    override:
+        additional-prefix: "Hello| "
+
+  订阅四:
+    <<: *Proxyer
+    path: ./proxy_provider/订阅四.yaml
+#    proxy: 手动选择
+    url: "https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/vmess"
+    override:
+        additional-prefix: "空想家| "
+
+    
+proxy-groups:
+  - { name: 手动选择, type: select, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/MY.png", <<: *Use }
+  - { name: 自动选择, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png", <<: *auto }
+  - { name: 低倍率节点, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/liuliang(2).png", <<:  *fallb, filter: *FilterLowMag }
+ #"(0.0?)+[1-9]+(0?)+[xX×]"
+  - { name: 高倍率节点, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/liuliang(3).png", <<: *fallb, filter: *FilterHighMag }       
+  - { name: 广告拦截, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png", type: select, proxies: [REJECT, DIRECT] }
+  - { name: Emby, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png", <<: *Selector }
+  - { name: 守候影院, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/shouhou(2).png", <<: *Selector }
+  - { name: TikTok, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png", <<: *Selector } 
+  - { name: YouTube, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png", <<: *Selector }
+  - { name: YouTubeMusic, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube_Music.png", <<: *Selector }
+  - { name: Netflix, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png", <<: *Selector }
+  - { name: Spotify, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png", <<: *Selector }
+  - { name: 国外媒体, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ForeignMedia.png", <<: *Selector }
+  - { name: OpenAi, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/AI.png", <<: *Selector }
+  - { name: Apple, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png", <<: *Selector }
+  - { name: Google, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/google(1).png", <<: *Selector }
+  - { name: Telegram, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png", <<: *Selector }
+  - { name: Twitter, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png", <<: *Selector } 
+  - { name: Github, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png", <<: *Selector }
+  - { name: 微软Bing, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/bing.png", <<: *Selector }  
+  - { name: 微软云盘, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png", <<: *Selector }
+  - { name: 微软服务, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png", <<: *Selector }   
+  - { name: 游戏平台, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png", <<: *Selector }
+  - { name: 国外代理, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png", <<: *Selector }
+  - { name: 网易音乐, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png", <<: *Selector }
+  - { name: 哔哩哔哩, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png", <<: *Selector }
+  - { name: 抖音, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_2.png", <<: *Selector }
+  - { name: 虎牙, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Viu.png", <<: *Selector }
+  - { name: 斗鱼, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ViuTV.png", <<: *Selector }
+  - { name: 国内媒体, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/DomesticMedia.png", <<: *Selector } 
+  - { name: 知乎, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/zhihu.png", <<: *Selector }
+  - { name: 微博, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Weibo.png", <<: *Selector }
+  - { name: 微信, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/WeChat.png", <<: *Selector }  
+  - { name: 全球直连, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png", <<: *Selector }  
+
+  # 其他就是所有规则没匹配到的
+  # 可以理解为 ACL4SSR 配置里的 漏网之鱼
+  # 换言之，其他走代理就是绕过中国大陆地址，不走就是 GFWList 模式
+  - { name: 漏网之鱼, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png", <<: *Selector }
+
+  # 分隔,下面是地区分组
+  # 特殊地区分组
+  - { name: Hong Kong, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png", <<: *fallb, filter: *FilterHKSP, hidden: true }
+  - { name: Singapore, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png", <<: *fallb, filter: *FilterSGSP, hidden: true }
+  - { name: Japan, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *fallb, filter: *FilterJPSP, hidden: true }
+  # 故障转移分组(fallback)
+  - { name: HK-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png", <<: *fallb, filter: *FilterHK, hidden: true }  
+  - { name: TW-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png", <<: *fallb, filter: *FilterTW, hidden: true } 
+  - { name: SG-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png", <<: *fallb, filter: *FilterSG, hidden: true } 
+  - { name: JP-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *fallb, filter: *FilterJP, hidden: true }
+  - { name: KR-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *fallb, filter: *FilterKR, hidden: true }  
+  - { name: US-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *fallb, filter: *FilterUS, hidden: true }  
+  - { name: RU-故障转移, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *fallb, filter: *FilterRU, hidden: true }
+  # 负载均衡分组(load-balance)
+  - { name: HK-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png", <<: *loadc, filter: *FilterHK, hidden: true }
+  - { name: TW-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png", <<: *loadc, filter: *FilterTW, hidden: true }
+  - { name: SG-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png", <<: *loadc, filter: *FilterSG, hidden: true }
+  - { name: JP-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png", <<: *loadc, filter: *FilterJP, hidden: true }
+  - { name: KR-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png", <<: *loadc, filter: *FilterKR, hidden: true }
+  - { name: US-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png", <<: *loadc, filter: *FilterUS, hidden: true }
+  - { name: RU-负载均衡, icon: "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Russia.png", <<: *loadc, filter: *FilterRU, hidden: true }
+  - { name: 冷门节点, icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/quanqiu(3).png", <<: *loadc, filter: *FilterOther, hidden: true}
+  # 机场分组
+  - name: 订阅一
+    type: select
+    Use: 
+      - 订阅一
+    lazy: true
+    filter: *FilterAll
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/订阅四.png"
+  - name: 订阅二
+    type: select
+    Use: 
+      - 订阅二
+    lazy: true
+    filter: *FilterAll
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/订阅二.png"
+  - name: 订阅三
+    type: select
+    Use: 
+      - 订阅三
+    lazy: true
+    filter: *FilterAll
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/订阅三.png"   
+  - name: 订阅四
+    type: select
+    Use: 
+      - 订阅四
+    lazy: true
+    filter: *FilterAll
+    icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/订阅四.png"
+
+                  
+rule-providers:
+  秋风广告规则:
+    <<: *dom
+    format: yaml
+    path: ./rule_providers/AWAvenue-Ads-Rule-Clash.yaml
+    url: "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main//Filters/AWAvenue-Ads-Rule-Clash.yaml"
+  AntiAD:
+    <<: *cla
+    format: text
+    path: ./rule_providers/AntiAD.list
+    url: "https://whatshub.top/rule/AntiAD.list"
+  Advertising_Classical:
+    <<: *cla
+    format: yaml
+    path: ./rule_provider/Advertising_Classical.yaml
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Advertising/Advertising_Classical.yaml"
+#  anti-AD:
+#    <<: *dom
+#    format: yaml
+#     # path可为空(仅限clash.meta 1.15.0以上版本)
+#    path: ./rule_provider/anti-AD.yaml
+#    url: "https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml"
+#  anti-AD-white:
+#    <<: *dom
+#    format: yaml
+    # path可为空(仅限clash.meta 1.15.0以上版本)
+#    path: ./rule_provider/anti-AD-white.yaml
+#    url: "https://raw.githubusercontent.com/privacy-protection-tools/dead-horse/master/anti-ad-white-for-clash.yaml"
+#  RejectAD:
+#    <<: *dom
+#    # path可为空(仅限clash.meta 1.15.0以上版本)
+#    format: text
+#    path: ./rule_provider/Reject.txt
+#    url: "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt"
+#  ADS:
+#    <<: *cla   
+#    url: "https://adrules.top/adrules.list"
+#    path: ./rule_provider/adrules.list
+#    format: text
+#  sogouinput:
+#    <<: *cla
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/non_ip/sogouinput.txt"
+#    path: ./sukkaw_ruleset/sogouinput.txt
+#  reject_non_ip_no_drop:
+#    <<: *cla
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/non_ip/reject-no-drop.txt"
+#    path: ./sukkaw_ruleset/reject_non_ip_no_drop.txt
+#  reject_non_ip_drop:
+#    <<: *cla
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/non_ip/reject-drop.txt"
+#    path: ./sukkaw_ruleset/reject_non_ip_drop.txt
+#  reject_non_ip:
+#    <<: *cla
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/non_ip/reject.txt"
+#    path: ./sukkaw_ruleset/reject_non_ip.txt
+  # WARNING! Using reject_domainset can cause Clash out of memory due to the insufficient Clash implementation.
+#  reject_domainset:
+#    <<: *dom
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/domainset/reject.txt"
+#    path: ./sukkaw_ruleset/reject_domainset.txt
+#  reject_ip:
+#    <<: *cla
+#    format: text
+#    url: "https://ruleset.skk.moe/Clash/ip/reject.txt"
+#    path: ./sukkaw_ruleset/reject_ip.txt
+#  OisdBig:
+#    <<: *dom
+#    format: text
+#    path: ./rule_provider/oisd_big_abp.yaml"
+#    url: "https://big.oisd.nl/domainswild
+#  OisdNsfw:
+#    format: text
+#    <<: *dom
+#    path: ./rule_provider/oisd_nsfw_abp.yaml"
+#    url:"https://nswf.oisd.nl/domainswild
+  Emby: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Emby/Emby.yaml",path: ./Ruleset/Emby.yaml}
+  TikTok: {<<: *cla, url: "https://whatshub.top/rule/TikTok.list",path: ./Ruleset/TikTok.yaml}  
+  YouTubeMusic: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml",path: ./Ruleset/YouTubeMusic.yaml}
+  Streaming: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Classical.yaml",path: ./Ruleset/Streaming.yaml}
+  NeteaseMusic: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml",path: ./Ruleset/NetEaseMusic.yaml}
+  DouYin: {<<: *cla, format: text, url: "https://whatshub.top/rule/DouYin.list",path: ./Ruleset/DouYin.list}
+  HuYa: {<<: *cla, format: text, url: "https://whatshub.top/rule/HuYa.list",path: ./Ruleset/HuYa.list} 
+  DouYu: {<<: *cla, format: text, url: "https://whatshub.top/rule/Douyu.list",path: ./Ruleset/DouYu.list}   
+  StreamingCN: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml",path: ./Ruleset/StreamingCN.yaml}
+  Game: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml",path: ./Ruleset/Game.yaml}
+  WeChat: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.yaml",path: ./Ruleset/Wechat.yaml}
+  Global: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Classical.yaml",path: ./Ruleset/Global.yaml}
+  Zhihu: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Zhihu/Zhihu.yaml",path: ./Ruleset/Zhihu.yaml}
+  Weibo: {<<: *cla, url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Weibo/Weibo_No_Resolve.yaml",path: ./Ruleset/Weibo.yaml}  
+  
+
+rules:
+#  - IP-SUFFIX,121.41.111.155,DIRECT,no-resolve
+  - GEOSITE,private,DIRECT
+  - GEOIP,private,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,cn2gias.uk,守候影院
+  - DOMAIN-SUFFIX,linkeless.com,国外代理
+  - DOMAIN-SUFFIX,xttlove.uk,国外代理      
+  - GEOSITE,category-ads-all,广告拦截
+  - RULE-SET,秋风广告规则,广告拦截
+  - RULE-SET,AntiAD,广告拦截
+  - RULE-SET,Advertising_Classical,广告拦截
+  - RULE-SET,YouTubeMusic,YouTubeMusic
+  - GEOSITE,youtube,YouTube
+  - RULE-SET,Emby,Emby
+  - GEOSITE,tiktok,TikTok
+  - RULE-SET,TikTok,TikTok
+  - GEOSITE,netflix,Netflix
+  - GEOIP,netflix,Netflix,no-resolve
+  - GEOSITE,spotify,Spotify
+  - RULE-SET,Streaming,国外媒体
+  - GEOSITE,google,Google
+  - GEOIP,google,Google,no-resolve
+  - GEOSITE,telegram,Telegram
+  - GEOIP,telegram,Telegram,no-resolve
+  - GEOSITE,openai,OpenAi
+  - GEOSITE,twitter,Twitter
+  - GEOSITE,github,Github
+  - RULE-SET,Game,游戏平台
+  - RULE-SET,WeChat,微信
+  - GEOSITE,onedrive,微软云盘
+  - GEOSITE,bing,微软Bing
+  - GEOSITE,microsoft,微软服务
+  - GEOSITE,apple,Apple
+  - GEOSITE,category-scholar-!cn,国外代理
+  - GEOSITE,geolocation-!cn,国外代理
+  - RULE-SET,Global,国外代理
+  - GEOSITE,bilibili,哔哩哔哩
+  - RULE-SET,NeteaseMusic,网易音乐
+  - RULE-SET,DouYin,抖音
+  - RULE-SET,HuYa,虎牙
+  - RULE-SET,DouYu,斗鱼
+  - RULE-SET,StreamingCN,国内媒体
+  - RULE-SET,Zhihu,知乎
+  - RULE-SET,Weibo,微博
+  - GEOSITE,cn,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,漏网之鱼
