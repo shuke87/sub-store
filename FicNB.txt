@@ -244,6 +244,22 @@ proxy-providers:
       additional-prefix: "【HW】| "
     exclude-filter: "(?i)前往|加入|群|流量|过期|回国|CN|安徽|北京|重庆|福建|甘肃|广东|广西|贵州|海南|河北|黑龙江|河南|湖北|湖南|吉林|江苏|江西|辽宁|内蒙古|宁夏|青海|山东|山西|陕西|上海|四川|天津|西藏|新疆|云南|浙江"
 
+
+
+  "Subscription_4":
+    type: http
+    url: "https://dlj.tf/X7ZBOvl"
+    path: "./proxy_providers/Subscription_3.yaml"
+    proxy: "🧭 探索大陆"
+    header:
+      <<: *proxy_providers_header
+    health-check:
+      enable: true
+      <<: *proxy_providers_health_check
+    override:
+      <<: *proxy_providers_override
+      additional-prefix: "【ZJ】| "
+    exclude-filter: "(?i)前往|加入|群|流量|过期|回国|CN|安徽|北京|重庆|福建|甘肃|广东|广西|贵州|海南|河北|黑龙江|河南|湖北|湖南|吉林|江苏|江西|辽宁|内蒙古|宁夏|青海|山东|山西|陕西|上海|四川|天津|西藏|新疆|云南|浙江"
 #################### 策略组 ####################
 proxy_groups_use_load_balance: &proxy_groups_use_load_balance {type: load-balance, include-all-providers: true, strategy: consistent-hashing} # strategy: consistent-hashing/round-robin/sticky-sessions
 proxy_groups_select_1_2: &proxy_groups_select_1_2 {type: select, proxies: [🗺 选择节点, 🌸 自动切换, 🌐 全球直连]}
