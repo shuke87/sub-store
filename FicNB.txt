@@ -249,7 +249,7 @@ proxy-providers:
   "Subscription_4":
     type: http
     url: "https://dlj.tf/X7ZBOvl"
-    path: "./proxy_providers/Subscription_3.yaml"
+    path: "./proxy_providers/Subscription_4.yaml"
     proxy: "🧭 探索大陆"
     header:
       <<: *proxy_providers_header
