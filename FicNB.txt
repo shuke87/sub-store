@@ -203,6 +203,7 @@ proxy-providers:
     type: http # 必须, provider 类型,可选 http/file
     url: "https://raw.githubusercontent.com/gitbigg/jd/refs/heads/main/new" # 注意!如果您的链接中带有“&”字符,请删掉.
     path: "./proxy_providers/Subscription_1.yaml" # 机场配置保存位置
+    interval: 3600
     proxy: "🧭 探索大陆"
     header:
       <<: *proxy_providers_header # 引用相关锚点
@@ -218,6 +219,7 @@ proxy-providers:
     type: http
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"
     path: "./proxy_providers/Subscription_2.yaml"
+    interval: 3600
     proxy: "🧭 探索大陆"
     header:
       <<: *proxy_providers_header
@@ -233,6 +235,7 @@ proxy-providers:
     type: http
     url: "https://flynb.site/sub/?token=F9F9zZcllpdyN5TluF9F9zZF9F9zZ11EEfx0g&tag=mixed"
     path: "./proxy_providers/Subscription_3.yaml"
+    interval: 3600
     proxy: "🧭 探索大陆"
     header:
       <<: *proxy_providers_header
@@ -250,6 +253,7 @@ proxy-providers:
     type: http
     url: "https://dlj.tf/X7ZBOvl"
     path: "./proxy_providers/Subscription_4.yaml"
+    interval: 3600
     proxy: "🧭 探索大陆"
     header:
       <<: *proxy_providers_header
