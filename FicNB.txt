@@ -233,7 +233,7 @@ proxy-providers:
 
   "Subscription_3":
     type: http
-    url: "https://flynb.site/sub/?token=F9F9zZcllpdyN5TluF9F9zZF9F9zZ11EEfx0g&tag=mixed"
+    url: "https://igdux.top/jtWfbA8w7TBTptw5Ee4dpjFi"
     path: "./proxy_providers/Subscription_3.yaml"
     interval: 3600
     proxy: "🧭 探索大陆"
