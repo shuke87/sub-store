@@ -233,7 +233,7 @@ proxy-providers:
 
   "Subscription_3":
     type: http
-    url: "https://igdux.top/jtWfbA8w7TBTptw5Ee4dpjFi"
+    url: "https://789.st/Z8iGwx3"
     path: "./proxy_providers/Subscription_3.yaml"
     interval: 3600
     proxy: "🧭 探索大陆"
@@ -251,7 +251,7 @@ proxy-providers:
 
   "Subscription_4":
     type: http
-    url: "https://igdux.top/jtWfbA8w7TBTptw5Ee4dpjFi"
+    url: "https://gist-collect.fqzs.workers.dev/clach.yml"
     path: "./proxy_providers/Subscription_4.yaml"
     interval: 3600
     proxy: "🧭 探索大陆"
