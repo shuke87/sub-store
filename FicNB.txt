@@ -251,7 +251,7 @@ proxy-providers:
 
   "Subscription_4":
     type: http
-    url: "https://gist-collect.fqzs.workers.dev/clach.yml"
+    url: "https://raw.githubusercontent.com/ssrsub/ssr/master/V2Ray"
     path: "./proxy_providers/Subscription_4.yaml"
     interval: 3600
     proxy: "🧭 探索大陆"
