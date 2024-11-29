@@ -235,7 +235,7 @@ proxy-providers:
     url: "https://igdux.top/~ssr/clash"
     path: "./proxy_providers/订阅3.yaml"
     interval: 3600
-    proxy: "🧭 策略选择
+    proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header
     health-check:
