@@ -204,7 +204,7 @@ proxy-providers:
     url: "https://igdux.top/~Clash" # 注意!如果您的链接中带有“&”字符,请删掉.
     path: "./proxy_providers/订阅1.yaml" # 机场配置保存位置
     interval: 3600
-    proxy: "🧭 探索大陆"
+    proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header # 引用相关锚点
     health-check: # 延迟测试
@@ -220,7 +220,7 @@ proxy-providers:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"
     path: "./proxy_providers/订阅2.yaml"
     interval: 3600
-    proxy: "🧭 探索大陆"
+    proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header
     health-check:
@@ -235,7 +235,7 @@ proxy-providers:
     url: "https://igdux.top/~ssr/clash"
     path: "./proxy_providers/订阅3.yaml"
     interval: 3600
-    proxy: "🧭 探索大陆"
+    proxy: "🧭 策略选择
     header:
       <<: *proxy_providers_header
     health-check:
@@ -249,11 +249,11 @@ proxy-providers:
 #################### 策略组 ####################
 proxy_groups_use_load_balance: &proxy_groups_use_load_balance {type: load-balance, include-all-providers: true, strategy: consistent-hashing} # strategy: consistent-hashing/round-robin/sticky-sessions
 proxy_groups_select_1_2: &proxy_groups_select_1_2 {type: select, proxies: [🗺 选择节点, 🌸 自动切换, 🌐 全球直连]}
-proxy_groups_proxy: &proxy_groups_proxy {type: select, proxies: [🧭 探索大陆, 🌐 全球直连]}
-proxy_groups_direct: &proxy_groups_direct {type: select, proxies: [🌐 全球直连, 🧭 探索大陆]}
+proxy_groups_proxy: &proxy_groups_proxy {type: select, proxies: [🧭 策略选择, 🌐 全球直连]}
+proxy_groups_direct: &proxy_groups_direct {type: select, proxies: [🌐 全球直连, 🧭 策略选择]}
 
 proxy-groups:
-  - {name: 🧭 探索大陆, type: select, proxies: [🗺 选择节点,🌸 自动切换, 🌐 全球直连, ]}
+  - {name: 🧭 策略选择, type: select, proxies: [🗺 选择节点,🌸 自动切换, 🌐 全球直连, ]}
   - {name: 🌸 自动切换, type: url-test, include-all-providers: true,interval: 300,tolerance: 50}
   - {name: 🗺 选择节点, type: select, proxies: [🌸 自动切换, 🌐 全球直连], include-all-providers: true}
   - {name: 💌 谷歌推送, <<: *proxy_groups_proxy}
@@ -267,7 +267,7 @@ proxy-groups:
   - {name: 🔴 拦截数据, type: select, proxies: [REJECT-DROP]}
   - {name: ⚪ 绕过规则, type: select, proxies: [PASS]}
   - {name: 🌐 全球直连, type: select, proxies: [DIRECT]}
-  - {name: 🐋 漏网之鱼, type: select, proxies: [🧭 探索大陆, 🌐 全球直连]}
+  - {name: 🐋 漏网之鱼, type: select, proxies: [🧭 策略选择, 🌐 全球直连]}
   # 分隔,下面是地区分组
   # - {name: 🇺🇸 美国, type: url-test, include-all-providers: true, tolerance: 5, filter: "(?i)🇺🇸|🇺🇲|美|United States|UnitedStates|America", hidden: true}
   # - {name: 🇯🇵 日本, type: url-test, include-all-providers: true, tolerance: 5, filter: "(?i)🇯🇵|日|Japan|Nippon|Nihon", hidden: true}
@@ -304,22 +304,22 @@ rules:
   - OR,((GEOSITE,category-ads-all),(RULE-SET,anti-AD)),🔴 拦截数据 # 包含了常见的广告域名及提供商的域名 | 自定义拦截
   - OR,((GEOSITE,private),(GEOIP,private,no-resolve)),🌐 全球直连 # 包含私有 IP
   - OR,((AND,((DST-PORT,443),(NETWORK,udp),(GEOSITE,!cn))),(AND,((DST-PORT,443),(NETWORK,udp),(GEOIP,!cn)))),🇶 Q U I C # 国内以外的 QUIC
-  - RULE-SET,anti-AD,🧭 探索大陆 # 自定义代理
+  - RULE-SET,anti-AD,🧭 策略选择 # 自定义代理
   - RULE-SET,anti-AD,🌐 全球直连 # 自定义直连
-  - GEOSITE,biliintl,🧭 探索大陆
+  - GEOSITE,biliintl,🧭 策略选择
   - GEOSITE,bilibili,📺 哔哩哔哩
   - GEOSITE,netflix,🎞 奈飞影视
   - GEOSITE,tiktok,📸 国际抖音
   - GEOSITE,openai,🤖 人工智能
   - GEOSITE,googlefcm,💌 谷歌推送
   - GEOSITE,youtube,📺 油管视频
-  - GEOSITE,google@cn,🧭 探索大陆
+  - GEOSITE,google@cn,🧭 策略选择
   - GEOSITE,onedrive,🌐 全球直连
-  - GEOSITE,microsoft@cn,🧭 探索大陆
+  - GEOSITE,microsoft@cn,🧭 策略选择
   - GEOSITE,category-public-tracker,🧬 Tracker
   - GEOSITE,category-games@cn,🌐 全球直连
   - OR,((GEOSITE,cn),(GEOIP,cn)),🌐 全球直连
-  - IN-TYPE,INNER,🧭 探索大陆
+  - IN-TYPE,INNER,🧭 策略选择
   - MATCH,🐋 漏网之鱼
 
 #################### 子规则 ####################
