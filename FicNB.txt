@@ -207,7 +207,7 @@ proxy-providers:
     proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header # 引用相关锚点
-    health-check: # 延迟测试
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300} # 延迟测试
       enable: true # 是否启用,可选 true/false
       <<: *proxy_providers_health_check
     override: # 覆写节点内容
@@ -223,7 +223,7 @@ proxy-providers:
     proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header
-    health-check:
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300} # 延迟测试
       enable: true
       <<: *proxy_providers_health_check
     override:
@@ -238,7 +238,7 @@ proxy-providers:
     proxy: "🧭 策略选择"
     header:
       <<: *proxy_providers_header
-    health-check:
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300} # 延迟测试
       enable: true
       <<: *proxy_providers_health_check
     override:
