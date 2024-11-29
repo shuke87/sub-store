@@ -254,9 +254,7 @@ proxy_groups_direct: &proxy_groups_direct {type: select, proxies: [🌐 全球�
 
 proxy-groups:
   - {name: 🧭 探索大陆, type: select, proxies: [🗺 选择节点,🌸 自动切换, 🌐 全球直连, ]}
-  - {name: 🌸 自动切换, type: url-test, include-all-providers: true, url: http://cp.cloudflare.com/generate_204
-    interval: 300
-    tolerance: 50}
+  - {name: 🌸 自动切换, type: url-test, include-all-providers: true,interval: 300,tolerance: 50}
   - {name: 🗺 选择节点, type: select, proxies: [🌸 自动切换, 🌐 全球直连], include-all-providers: true}
   - {name: 💌 谷歌推送, <<: *proxy_groups_proxy}
   - {name: 📺 油管视频, <<: *proxy_groups_proxy}
