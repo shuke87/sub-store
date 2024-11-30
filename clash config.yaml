@@ -55,10 +55,7 @@ proxy-providers:
     url: "https://igdux.top/~Clash"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
-    provider2:
-     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"
-     path: "./Proxy/provider2.yaml"
-     <<: *p
+   
  
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
@@ -66,7 +63,6 @@ proxies: # 直连配置/不修改
 u: &u # 调用proxy-providers
   use:
   - provider1
-  - provider2
 
 proxy-groups:
   - name: 🚀 节点选择
