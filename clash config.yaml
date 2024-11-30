@@ -56,7 +56,7 @@ proxy-providers:
     path: "./Proxy/provider1.yaml"
     <<: *p
     provider2:
-     url: "https://igdux.top/~ssr/clash"
+     url: "https://suc-store.usuc.cc/sub?target=ssr&url=https%3A%2F%2Figdux.top%2F~ssr%2Fclash&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online.ini&emoji=true&list=false&xudp=false&udp=false&tfo=false&expand=true&scv=false&fdn=false"
      path: "./Proxy/provider2.yaml"
      <<: *p
  
