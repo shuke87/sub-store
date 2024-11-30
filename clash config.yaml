@@ -56,7 +56,7 @@ proxy-providers:
     path: "./Proxy/provider1.yaml"
     <<: *p
    override:
-   additional-prefix: "【旺财】"
+   additional-prefix: "旺"
  
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
