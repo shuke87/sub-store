@@ -55,7 +55,8 @@ proxy-providers:
     url: "https://igdux.top/~Clash"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
-   
+   override:
+   additional-prefix: "【旺财】"
  
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
