@@ -56,14 +56,12 @@ proxy-providers:
     url: "https://igdux.top/~ssr/clash"   # 替换订阅地址
     path: ./Proxy/provider1.yaml
   override:
-    <<: *proxy_providers_override
       additional-prefix: "【🐶旺财】| " # 为节点名称添加固定前缀
    provider2:
      <<: *p
      url: "https://igdux.top/~Clash"
      path: ./Proxy/provider2.yaml
    override:
-     <<: *proxy_providers_override
       additional-prefix: "【🐕旺财】| " # 为节点名称添加固定前缀
  
 proxies: # 直连配置/不修改
