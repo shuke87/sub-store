@@ -53,10 +53,10 @@ p: &p  # proxy-providers复用配置
 proxy-providers:
   provider1:
     <<: *p
-    url: "https://igdux.top/~ssr/clash"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: ./Proxy/provider1.yaml
   override:
-      additional-prefix: "【🐶旺财】| " # 为节点名称添加固定前缀
+      additional-prefix: "【🦅社】| " # 为节点名称添加固定前缀
    provider2:
      <<: *p
      url: "https://igdux.top/~Clash"
