@@ -52,18 +52,20 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    <<: *p
-    type: http # 必须, provider 类型,可选 http/file
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: ./Proxy/provider1.yaml
-  override:
+  type: http
+    interval: 3600
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204", interval: 300}
+    override:
       additional-prefix: "【🦅社】| " # 为节点名称添加固定前缀
    provider2:
-     <<: *p
-     type: http # 必须, provider 类型,可选 http/file
      url: "https://igdux.top/~Clash"
      path: ./Proxy/provider2.yaml
-   override:
+   type: http
+    interval: 3600
+    health-check: {enable: true,url: "https://www.gstatic.com/generate_204", interval: 300}
+    override:
       additional-prefix: "【🐕旺财】| " # 为节点名称添加固定前缀
  
 proxies: # 直连配置/不修改
