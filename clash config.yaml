@@ -51,20 +51,22 @@ p: &p  # proxy-providers复用配置
     interval: 300
     
 proxy-providers:
-  provider1:
+  "provider1":
     url: "https://igdux.top/~Clash"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
-   override:
-   additional-prefix: "旺"
- 
+    
+   "provider2":
+    url: "https://igdux.top/~ssr/clash"   # 替换订阅地址
+    path: "./Proxy/provider2.yaml"
+    <<: *p
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
 
 u: &u # 调用proxy-providers
   use:
   - provider1
-
+  - provider2
 proxy-groups:
   - name: 🚀 节点选择
     type: select
