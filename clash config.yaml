@@ -51,17 +51,27 @@ p: &p  # proxy-providers复用配置
     interval: 300
     
 proxy-providers:
- provider1:
+  provider1:
+
     url: "https://igdux.top/~Clash"   # 替换订阅地址
+
     path: "./Proxy/provider1.yaml"
+
     <<: *p
+
     override:
+
       additional-prefix: "【旺财】"
   provider2:
+
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
+
     path: "./Proxy/provider2.yaml"
+
     <<: *p
+
     override:
+
       additional-prefix: "【社】"
    
 proxies: # 直连配置/不修改
