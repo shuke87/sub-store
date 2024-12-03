@@ -69,6 +69,7 @@ proxy-providers:
     <<: *p
     override:
       additional-prefix: "【自】"
+      
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
 
