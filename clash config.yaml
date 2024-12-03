@@ -57,7 +57,7 @@ proxy-providers:
     <<: *p
     override:
       additional-prefix: "【旺财】"
-  provider2:
+   provider2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
     <<: *p
