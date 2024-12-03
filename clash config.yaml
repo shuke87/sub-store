@@ -58,11 +58,11 @@ proxy-providers:
     override:
       additional-prefix: "【旺财】"
   provider2:
-    url: "https://igdux.top/~ssr/clash"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
     <<: *p
     override:
-      additional-prefix: "【旺财2】"
+      additional-prefix: "【社】"
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
 
