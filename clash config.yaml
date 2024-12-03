@@ -63,7 +63,13 @@ proxy-providers:
     <<: *p
     override:
       additional-prefix: "【社】"
-   
+   provider3:
+    url: "https://raw.githubusercontent.com/shuke87/shuke87/refs/heads/main/README.md"   # 替换订阅地址
+    path: "./Proxy/provider3.yaml"
+    <<: *p
+    override:
+      additional-prefix: "【自】"
+      
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
 
