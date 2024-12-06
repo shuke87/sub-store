@@ -52,11 +52,11 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://igdux.top/~ssr/clash"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
-      additional-prefix: "【嫖】"
+      additional-prefix: "【旺】"
   provider2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
