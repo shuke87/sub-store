@@ -52,11 +52,11 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://igdux.top/~Clash"   # 替换订阅地址
+    url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gitbigg/jd/refs/heads/main/new"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
-      additional-prefix: "【旺】"
+      additional-prefix: "【胖虎】"
   provider2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
