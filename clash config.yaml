@@ -63,7 +63,13 @@ proxy-providers:
     <<: *p
     override:
       additional-prefix: "【社】"
-       
+  provider3:
+    url: "https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/vmess"   # 替换订阅地址
+    path: "./Proxy/provider3.yaml"
+    <<: *p
+    override:
+      additional-prefix: "【空】"    
+      
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
 
@@ -71,6 +77,7 @@ u: &u # 调用proxy-providers
   use:
   - provider1
   - provider2
+  - provider3
 proxy-groups:
   - name: 🚀 节点选择
     type: select
