@@ -68,7 +68,7 @@ proxy-providers:
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
-      additional-prefix: "【空】"    
+      additional-prefix: "【胖虎】"    
       
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
