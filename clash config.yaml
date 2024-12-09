@@ -64,7 +64,7 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gitbigg/jd/refs/heads/main/new"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/gitbigg/jd/refs/heads/main/new"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
