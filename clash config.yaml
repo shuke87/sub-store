@@ -52,7 +52,7 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://www.now61.com/f/pGXOhP/Tg@dingyue_Center.yaml"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
@@ -64,11 +64,11 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://igdux.top/~Clash"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/gitbigg/jd/refs/heads/main/new"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
-      additional-prefix: "【旺】"    
+      additional-prefix: "【虎】"    
       
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
