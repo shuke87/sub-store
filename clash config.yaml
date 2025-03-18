@@ -52,11 +52,11 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://sublink.634676.xyz/sub"   # 替换订阅地址
+    url: "https://igdux.top/~Clash"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
-      additional-prefix: "【嫖】"
+      additional-prefix: "【旺】"
   provider2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
@@ -64,11 +64,11 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/Huibq/TrojanLinks/master/links/vmess"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
-      additional-prefix: "【机】"    
+      additional-prefix: "【空】"    
       
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
