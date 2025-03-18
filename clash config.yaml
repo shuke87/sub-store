@@ -52,7 +52,7 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://www.now61.com/f/pGXOhP/Tg@dingyue_Center.yaml"   # 替换订阅地址
+    url: "https://sublink.634676.xyz/sub"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
