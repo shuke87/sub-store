@@ -64,7 +64,7 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/ssrsub/ssr/master/V2Ray"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
