@@ -64,7 +64,7 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://sub.dafei.de/share/sub/%E5%85%B3%E6%B3%A8TG%40dafei_di?token=dafei_di"   # 替换订阅地址
+    url: "https://sub.dafei.de/share/sub/%E4%B8%80%E5%85%83%E6%9C%BA%E5%9C%BA%3Assrsub.de?token=%E4%B8%80%E5%85%83%E6%9C%BA%E5%9C%BA%3Assrsub.de"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
