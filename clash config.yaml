@@ -52,11 +52,11 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://tt.vg/ss"   # 替换订阅地址
+    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
-      additional-prefix: "【旺】"
+      additional-prefix: "【🐶】"
   provider2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
     path: "./Proxy/provider2.yaml"
