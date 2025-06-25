@@ -52,7 +52,7 @@ p: &p  # proxy-providers复用配置
     
 proxy-providers:
   provider1:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray.txt"   # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     override:
