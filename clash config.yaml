@@ -64,11 +64,11 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://sub.dafei.de/share/sub/%E4%B8%80%E5%85%83%E6%9C%BA%E5%9C%BA%3Assrsub.de?token=%E4%B8%80%E5%85%83%E6%9C%BA%E5%9C%BA%3Assrsub.de"   # 替换订阅地址
+    url: "https://tt.vg/vmess"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
-      additional-prefix: "【白】"    
+      additional-prefix: "【旺】"    
       
 proxies: # 直连配置/不修改
   - {name: 🌏 直连,type: direct}
@@ -206,3 +206,4 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
