@@ -64,7 +64,7 @@ proxy-providers:
     override:
       additional-prefix: "【社】"
   provider3:
-    url: "https://sub.fqzsnai.ggff.net/auto"   # 替换订阅地址
+    url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/%E5%B0%8F%E4%B8%83%E5%88%86%E4%"   # 替换订阅地址
     path: "./Proxy/provider3.yaml"
     <<: *p
     override:
@@ -206,6 +206,7 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
 
 
 
