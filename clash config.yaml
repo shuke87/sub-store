@@ -1,7 +1,7 @@
 mixed-port: 7890
 allow-lan: true
 mode: rule
-log-level: warn  # 降低日志级别，减少资源占用
+log-level: info  # 修正为合法值
 ipv6: true
 external-controller: :9090
 unified-delay: true
