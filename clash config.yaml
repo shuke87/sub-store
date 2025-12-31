@@ -6,103 +6,103 @@ ipv6: true
 external-controller: :9090
 unified-delay: true  # 统一延迟
 tcp-concurrent: true  # TCP并发
-use-hosts: true  # 优先本地hosts解析
-cache: true  # DNS缓存
-cache-algorithm: arc  # DNS缓存算法
+使用主机：true  # 优先本地hosts解析: true  # 优先本地hosts解析
+缓存: true  # DNS缓存: true  # DNS缓存
+缓存算法：arc  # DNS缓存算法: arc  # DNS缓存算法
  
 dns:
   enable: true
-  listen: 0.0.0.0:1053
+  监听: 0.0.0.0:1053: 0.0.0.0:1053
   ipv6: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
+  增强模式：假IP: fake-ip
+  假IP范围：198.18.0.1/16: 198.18.0.1/16
   fake-ip-filter:
   - "+.lan"
   - "+.local"
   - "+.msftconnecttest.com"
   - "+.msftncsi.com"
   - localhost.ptlogin2.qq.com
-  - localhost.sec.qq.com
-  - localhost.work.weixin.qq.com
-  default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  - 8.8.8.8
-  nameserver:
+  - 本地主机.sec.qq.com 本地主机.sec.qq.com
+  - localhost工作微信
+  默认名称服务器:
+  - 223.5.5.5223.5.5.5
+  - 119.29.29.29119.29.29.29
+  - 8.8.8.88.8.8.8
+  名称服务器：
   - https://223.5.5.5/dns-query
   - https://1.12.12.12/dns-query
   - https://8.8.8.8/dns-query
-  fallback:
+  回退：
   - https://1.1.1.1/dns-query
   - https://1.0.0.1/dns-query
   - https://doh.opendns.com/dns-query
-#  fallback-filter:
-#     geoip: false
-#     geoip-code: CN
+# 备份过滤器:
+#     地理位置： 错误
+#     地理IP代码: 中国
 #     ipcidr:
 #     - 240.0.0.0/4
  
-p: &p  # proxy-providers复用配置
-  type: http
-  interval: 3600
-  health-check:
-    enable: true
-    url: https://www.gstatic.com/generate_204
-    interval: 300
+p: &p  # proxy-providers 复用配置: &p  # proxy-providers复用配置
+  类型：http：http
+  间隔： 3600
+  健康检查：
+    启用：真
+    url：https://www.gstatic.com/generate_204：https://www.gstatic.com/generate_204
+    间隔： 300
     
-proxy-providers:
-  provider1:
-    url: "https://raw.githubusercontent.com/Barabama/FreeNodes/main/nodes/yudou66.txt"   # 替换订阅地址
-    path: "./Proxy/provider1.yaml"
-    <<: *p
-    override:
+代理提供商:
+  提供商1：
+    url: "https://v1.mk/WangCai" # 替换订阅地址
+    路径: "./Proxy/provider1.yaml"
+    <<：*p
+    重写：
       additional-prefix: "【🐶】"
-  provider2:
+  提供商2：
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
-    path: "./Proxy/provider2.yaml"
-    <<: *p
-    override:
-      additional-prefix: "【社】"
-  provider3:
-    url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/%E5%B0%8F%E4%B8%83%E5%88%86%E4%BA%AB%E7%A4%BE%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB"   # 替换订阅地址
-    path: "./Proxy/provider3.yaml"
-    <<: *p
-    override:
-      additional-prefix: "【白嫖】"    
+    路径："./Proxy/provider2.yaml"
+    <<：*p
+    重写：
+      附加前缀："【社】"
+  提供者3:
+    url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/小红书AB测试点"   # 替换订阅地址
+    路径："./Proxy/provider3.yaml"
+    <<：*p
+    重写：
+      additional-prefix："【白嫖】"    
       
-proxies: # 直连配置/不修改
-  - {name: 🌏 直连,type: direct}
+代理：# 直连配置/不修改
+  - {name: 🌏 直连,type: 直接}
 
-u: &u # 调用proxy-providers
-  use:
-  - provider1
-  - provider2
-  - provider3
-proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies: [♻️ 自动选择, 🌏 直连]
-    <<: *u
-  - name: ♻️ 自动选择
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    <<: *u
-  - name: 📽 国外媒体
-    type: select
-    proxies: [♻️ 自动选择, 🚀 节点选择]
-    <<: *u
-  - name: 📲 Telegram
-    type: select
-    proxies: [♻️ 自动选择, 🚀 节点选择]
-    <<: *u
-  - name: 💬 ChatAi
-    type: select
-    proxies: [♻️ 自动选择, 🚀 节点选择]
-    <<: *u
-  - name: 🛡 网络净化
-    type: select
+u: &u # 调用代理提供者
+  使用：
+  - 提供者1
+  - 提供者2
+  - 提供者3
+代理组:
+  - 名称: 🚀 节点选择
+    类型： 选择
+    代理: [♻️ 自动选择, 🌏 直连]
+    <<：*u
+  - 名称: ♻️ 自动选择
+    类型：url-test
+    地址： http://www.gstatic.com/generate_204
+    间隔： 300
+    容差：50
+    <<：*u
+  - 名称: 📽 国外媒体
+    类型： 选择
+    代理: [♻️ 自动选择, 🚀 节点选择]
+    <<：*u
+  - 名称: 📲 电报
+    类型： 选择
+    代理: [♻️ 自动选择, 🚀 节点选择]
+    <<：*u
+  - 名字: 💬 聊天人工智能
+    类型： 选择
+    代理: [♻️ 自动选择, 🚀 节点选择]
+    <<：*u
+  - 名称: 🛡 网络净化
+    类型： 选择
     proxies: [REJECT, 🌏 直连]
   - name: 🌏 全球直连
     type: select
@@ -206,6 +206,7 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
 
 
 
