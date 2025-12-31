@@ -6,103 +6,109 @@ ipv6: true
 external-controller: :9090
 unified-delay: true  # 统一延迟
 tcp-concurrent: true  # TCP并发
-使用主机：true  # 优先本地hosts解析: true  # 优先本地hosts解析
-缓存: true  # DNS缓存: true  # DNS缓存
-缓存算法：arc  # DNS缓存算法: arc  # DNS缓存算法
- 
+use-hosts: true  # 优先本地hosts解析
+dns-cache: true  # DNS缓存
+dns-cache-algorithm: arc  # DNS缓存算法
+
 dns:
   enable: true
-  监听: 0.0.0.0:1053: 0.0.0.0:1053
+  listen: 0.0.0.0:1053
   ipv6: true
-  增强模式：假IP: fake-ip
-  假IP范围：198.18.0.1/16: 198.18.0.1/16
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-  - "+.lan"
-  - "+.local"
-  - "+.msftconnecttest.com"
-  - "+.msftncsi.com"
-  - localhost.ptlogin2.qq.com
-  - 本地主机.sec.qq.com 本地主机.sec.qq.com
-  - localhost工作微信
-  默认名称服务器:
-  - 223.5.5.5223.5.5.5
-  - 119.29.29.29119.29.29.29
-  - 8.8.8.88.8.8.8
-  名称服务器：
-  - https://223.5.5.5/dns-query
-  - https://1.12.12.12/dns-query
-  - https://8.8.8.8/dns-query
-  回退：
-  - https://1.1.1.1/dns-query
-  - https://1.0.0.1/dns-query
-  - https://doh.opendns.com/dns-query
-# 备份过滤器:
-#     地理位置： 错误
-#     地理IP代码: 中国
-#     ipcidr:
-#     - 240.0.0.0/4
- 
-p: &p  # proxy-providers 复用配置: &p  # proxy-providers复用配置
-  类型：http：http
-  间隔： 3600
-  健康检查：
-    启用：真
-    url：https://www.gstatic.com/generate_204：https://www.gstatic.com/generate_204
-    间隔： 300
-    
-代理提供商:
-  提供商1：
+    - "+.lan"
+    - "+.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - localhost.ptlogin2.qq.com
+    - 本地主机.sec.qq.com
+    - localhost工作微信
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 8.8.8.8
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://1.12.12.12/dns-query
+    - https://8.8.8.8/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://1.0.0.1/dns-query
+    - https://doh.opendns.com/dns-query
+  # 备份过滤器（注释保留，如需启用删除#并调整格式）
+  # fallback-filter:
+  #   geoip: false
+  #   geoip-code: CN
+  #   ipcidr:
+  #     - 240.0.0.0/4
+
+# proxy-providers 复用配置
+p: &p
+  type: http
+  interval: 3600
+  health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+
+proxy-providers:
+  提供商1:
     url: "https://v1.mk/WangCai" # 替换订阅地址
-    路径: "./Proxy/provider1.yaml"
-    <<：*p
-    重写：
+    path: "./Proxy/provider1.yaml"
+    <<: *p
+    rewrite:
       additional-prefix: "【🐶】"
-  提供商2：
+  提供商2:
     url: "https://raw.githubusercontent.com/ripaojiedian/freenode/main/sub"   # 替换订阅地址
-    路径："./Proxy/provider2.yaml"
-    <<：*p
-    重写：
-      附加前缀："【社】"
+    path: "./Proxy/provider2.yaml"
+    <<: *p
+    rewrite:
+      additional-prefix: "【社】"
   提供者3:
     url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/小红书AB测试点"   # 替换订阅地址
-    路径："./Proxy/provider3.yaml"
-    <<：*p
-    重写：
-      additional-prefix："【白嫖】"    
-      
-代理：# 直连配置/不修改
-  - {name: 🌏 直连,type: 直接}
+    path: "./Proxy/provider3.yaml"
+    <<: *p
+    rewrite:
+      additional-prefix: "【白嫖】"
 
-u: &u # 调用代理提供者
-  使用：
-  - 提供者1
-  - 提供者2
-  - 提供者3
-代理组:
-  - 名称: 🚀 节点选择
-    类型： 选择
-    代理: [♻️ 自动选择, 🌏 直连]
-    <<：*u
-  - 名称: ♻️ 自动选择
-    类型：url-test
-    地址： http://www.gstatic.com/generate_204
-    间隔： 300
-    容差：50
-    <<：*u
-  - 名称: 📽 国外媒体
-    类型： 选择
-    代理: [♻️ 自动选择, 🚀 节点选择]
-    <<：*u
-  - 名称: 📲 电报
-    类型： 选择
-    代理: [♻️ 自动选择, 🚀 节点选择]
-    <<：*u
-  - 名字: 💬 聊天人工智能
-    类型： 选择
-    代理: [♻️ 自动选择, 🚀 节点选择]
-    <<：*u
-  - 名称: 🛡 网络净化
-    类型： 选择
+# 直连配置
+proxies:
+  - name: 🌏 直连
+    type: direct
+
+# 调用代理提供者复用配置
+u: &u
+  use:
+    - 提供商1
+    - 提供商2
+    - 提供者3
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies: [♻️ 自动选择, 🌏 直连]
+    <<: *u
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    <<: *u
+  - name: 📽 国外媒体
+    type: select
+    proxies: [♻️ 自动选择, 🚀 节点选择]
+    <<: *u
+  - name: 📲 电报
+    type: select
+    proxies: [♻️ 自动选择, 🚀 节点选择]
+    <<: *u
+  - name: 💬 聊天人工智能
+    type: select
+    proxies: [♻️ 自动选择, 🚀 节点选择]
+    <<: *u
+  - name: 🛡 网络净化
+    type: select
     proxies: [REJECT, 🌏 直连]
   - name: 🌏 全球直连
     type: select
@@ -110,8 +116,9 @@ u: &u # 调用代理提供者
   - name: 🐟 漏网之鱼
     type: select
     proxies: [🚀 节点选择, 🌏 直连]
- 
-c: &c  # rule-providers复用配置
+
+# rule-providers复用配置
+c: &c
   type: http
   behavior: classical
   format: text
@@ -126,7 +133,7 @@ ip: &ip
   behavior: ipcidr
   format: yaml
   interval: 86400
- 
+
 rule-providers:
   GoogleCNProxyIP: # 谷歌中国服务
     <<: *c
@@ -184,7 +191,7 @@ rule-providers:
     <<: *ym
     url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.yaml
     path: ./rule/AppGG.txt
-  
+
 rules:
   - DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择
   - DOMAIN-SUFFIX,gstatic.com,🚀 节点选择
@@ -194,9 +201,9 @@ rules:
   - RULE-SET,LoyalsGG,🛡 网络净化
   - RULE-SET,AppGG,🛡 网络净化
   - RULE-SET,BanEasyPrivacy,🛡 网络净化
-  - RULE-SET,Telegram,📲 Telegram,no-resolve
-  - RULE-SET,OpenAi,💬 ChatAi
-  - RULE-SET,ChatBot,💬 ChatAi
+  - RULE-SET,Telegram,📲 电报,no-resolve
+  - RULE-SET,OpenAi,💬 聊天人工智能
+  - RULE-SET,ChatBot,💬 聊天人工智能
   - RULE-SET,ProxyMedia,📽 国外媒体
   - RULE-SET,Proxy,🚀 节点选择
   - RULE-SET,GFWList,🚀 节点选择
@@ -206,9 +213,3 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
-
-
-
-
-
-
