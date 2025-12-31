@@ -1,22 +1,22 @@
-mixed-port: 7890
-allow-lan: true
-mode: rule
-log-level: info
-ipv6: true
-external-controller: :9090
-unified-delay: true  # 统一延迟
-tcp-concurrent: true  # TCP并发
-use-hosts: true  # 优先本地hosts解析
-dns-cache: true  # DNS缓存
-dns-cache-algorithm: arc  # DNS缓存算法
+混合端口：7890
+允许局域网：真
+模式：规则
+日志级别：信息
+ipv6：真
+外部控制器：：9090
+unified-delay：true  # 统一延迟
+tcp-concurrent：真  # TCP并发
+use-hosts：true  # 优先本地hosts解析
+dns-cache：真  # DNS缓存
+dns-cache-algorithm：arc  # DNS缓存算法
 
-dns:
-  enable: true
-  listen: 0.0.0.0:1053
-  ipv6: true
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
+域名系统:
+  启用：真
+  listen：0.0.0.0：1053
+  ipv6：真
+  增强模式：假IP
+  假IP范围：198.18.0.1/16
+  假IP过滤:
     - "+.lan"
     - "+.local"
     - "+.msftconnecttest.com"
@@ -24,15 +24,15 @@ dns:
     - localhost.ptlogin2.qq.com
     - 本地主机.sec.qq.com
     - localhost工作微信
-  default-nameserver:
+  默认名称服务器:
     - 223.5.5.5
     - 119.29.29.29
     - 8.8.8.8
-  名称服务器:
+  名称服务器：
     - https://223.5.5.5/dns-query
     - https://1.12.12.12/dns-query
     - https://8.8.8.8/dns-query
-  回退:
+  回退：
     - https://1.1.1.1/dns-query
     - https://1.0.0.1/dns-query
     - https://doh.opendns.com/dns-query
@@ -54,7 +54,7 @@ p: &p
 
 proxy-providers:
   提供商1:
-    url: "https://raw.githubusercontent.com/suiyuan8/clash/refs/heads/main/config2" # 替换订阅地址
+    url: "https://shz.al/~WangCai" # 替换订阅地址
     path: "./Proxy/provider1.yaml"
     <<: *p
     rewrite:
@@ -213,4 +213,5 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
 
