@@ -64,7 +64,7 @@ dns-cache-algorithm：arc  # DNS缓存算法
     路径："./Proxy/provider2.yaml"
     <<：*p
     重写：
-      附加前缀："【社】"
+      additional-prefix："【社】"
   提供者3:
     url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/小红书AB测试点"   # 替换订阅地址
     路径："./Proxy/provider3.yaml"
@@ -213,6 +213,7 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
 
 
 
