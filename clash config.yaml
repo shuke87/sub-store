@@ -54,7 +54,7 @@ dns-cache-algorithm：arc  # DNS缓存算法
 
 代理提供商:
   提供商1：
-    url: "https://raw.githubusercontent.com/XQFXS/mfjd/refs/heads/main/%E5%B0%8F%E4%B8%83%E5%88%86%E4%BA%AB%E7%A4%BE%E8%8A%82%E7%82%B9%E5%88%86%E4%BA%AB" # 替换订阅地址
+    url: "https://t.me/WangCai2" # 替换订阅地址
     路径: "./Proxy/provider1.yaml"
     <<：*p
     重写：
@@ -213,6 +213,7 @@ rules:
   - GEOIP,LAN,🌏 全球直连,no-resolve
   - GEOIP,CN,🌏 全球直连,no-resolve
   - MATCH,🐟 漏网之鱼
+
 
 
 
